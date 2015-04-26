@@ -19,16 +19,9 @@ def cheat(num):
     for n in range(num):
         cheatday = today - timedelta(days=n)
         cheatday = str(cheatday) + " 0:0:0"
-        os.system(change_file(cheatday) +
-                  change_date(cheatday) +
+        os.system(change_date(cheatday) +
                   commit('cheating'))
     os.system(push())
-
-
-def change_file(filecontent):
-    change_file = "echo '" + filecontent + "' > cheatfile.txt; "
-    add_files = "git add -A; "
-    return change_file + add_files
 
 
 def change_date(cheatday):
@@ -38,7 +31,7 @@ def change_date(cheatday):
 
 
 def commit(msg):
-    return "git commit -m '" + msg + "'; "
+    return "git commit -m '" + msg + "' --allow-empty; "
 
 
 def push():
